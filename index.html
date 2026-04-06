@@ -1,0 +1,47 @@
+<html>
+  <head>
+    <title>form</title>
+    <style>
+    #error{
+    color:red;
+    }
+    </style>
+  </head>
+  <body>
+    <h1>Contact us </h1>
+    <form id="form" action="https://formspree.io/f/mzdkyyra" method="POST" target="_blank">
+      <label for="name">Name</label>
+      <input id="name" type="text" placeholder="please enter your name " name="name"><br><br>
+      <label for="email">Email</label>
+      <input id="email" type="email" placeholder="please enter your email" name="email"><br><br>
+      <label for="message">Message</label>
+      <textarea id="message" placeholder="please enter message" name="message"></textarea><br><br>
+      <button id="send" type="submit">Send</button>
+    </form>
+      <p id="error">
+        
+      </p>
+      <script>
+        document.getElementById("form").addEventListener("submit",function(event){
+          event.preventDefault();
+          let name=document.getElementById("name").value;
+          let email=document.getElementById("email").value;
+          let message=document.getElementById("message").value;
+          let error=document.getElementById("error");
+          if(name===""){
+            error.innerHTML="please enter your name";
+          }
+          else if(!email.includes("@")){
+            error.innerHTML="please enter a valid email";
+          }
+          else if(message===""){
+            error.innerHTML="please enter your message";
+          }
+          else{
+            error.innerHTML="";
+            alert("Form submitted successfully");
+          }
+        });
+      </script>
+  </body>
+</html>
